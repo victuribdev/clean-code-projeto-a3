@@ -139,8 +139,6 @@ def create_order(customer_name, items, quantities, payment_type):
     orders.append(order)
     customers[customer_idx]["orders"].append(len(orders) - 1)
     
-    send_notification(customer_name, "novo_pedido", len(orders) - 1)
-    
     if lang == "pt":
         print(f"Pedido criado para {customer_name} com total de {final_total}.")
     else:
@@ -158,9 +156,6 @@ def update_order_status(order_index, new_status):
     
     if 0 <= order_index < len(orders):
         orders[order_index]["status"] = new_status
-        
-        customer_name = orders[order_index]["customer"]
-        send_notification(customer_name, "status_atualizado", order_index)
         
         if lang == "pt":
             print(f"Status do pedido {order_index} atualizado para {new_status}.")
@@ -248,59 +243,16 @@ def customer_order_history(customer_name):
             print(f"  Total: {order['total']}")
             print(f"  Status: {order['status']}")
 
-def send_notification(customer_name, notification_type, order_index):
-    for cust in customers:
-        if cust["name"] == customer_name:
-            email = cust["email"]
-            if notification_type == "novo_pedido":
-                if lang == "pt":
-                    print(f"Notificação enviada para {email}: Novo pedido criado (Pedido #{order_index}).")
-                else:
-                    print(f"Notification sent to {email}: New order created (Order #{order_index}).")
-            elif notification_type == "status_atualizado":
-                status = orders[order_index]["status"]
-                if lang == "pt":
-                    print(f"Notificação enviada para {email}: Status do pedido #{order_index} atualizado para {status}.")
-                else:
-                    print(f"Notification sent to {email}: Order #{order_index} status updated to {status}.")
-            break
-
 def change_language(language):
     global lang
     if language in ["pt", "en"]:
         lang = language
         if lang == "pt":
-            print("Idioma alterado para Português.")
+            print("Idioma alterado para português.")
         else:
             print("Language changed to English.")
     else:
         if lang == "pt":
             print("Idioma não suportado.")
         else:
-            print("Language not supported.")
-
-if __name__ == "__main__":
-    add_user("admin", "admin123", "admin")
-    add_user("vendedor", "vend123", "vendedor")
-    
-    login("admin", "admin123")
-    
-    register_customer("João Silva", "Rua A, 123", "joao@example.com")
-    register_customer("Maria Souza", "Rua B, 456", "maria@example.com")
-    
-    add_product("Smartphone", "eletrônicos", 1500.0, 10)
-    add_product("Notebook", "eletrônicos", 3000.0, 5)
-    add_product("Teclado", "acessórios", 100.0, 20)
-    add_product("Mouse", "acessórios", 50.0, 30)
-    
-    create_order("João Silva", ["Smartphone", "Teclado"], [1, 2], "cartão de crédito")
-    create_order("Maria Souza", ["Notebook", "Mouse"], [1, 1], "boleto")
-    
-    update_order_status(0, "pago")
-    
-    generate_report()
-    
-    customer_order_history("João Silva")
-    
-    change_language("en")
-    generate_report()
+            print("Language not supported.") 
