@@ -67,11 +67,11 @@ python -m unittest discover tests
 
 ## 👥 Integrantes do Grupo
 
-- Allan Carreiro Fonseca Prado
-- Daniely Teixeira Oliveira Melo
-- Gabriel Henrique de Oliveira Ramos
-- Graziele dos Santos Rodrigues
-- Paulo Victor Ribeiro dos Santos
+- Allan Carreiro Fonseca Prado RA: 12524116608
+- Daniely Teixeira Oliveira Melo RA: 82419386
+- Gabriel Henrique de Oliveira Ramos RA: 324146952
+- Graziele dos Santos Rodrigues RA: 12722217682
+- Paulo Victor Ribeiro dos Santos RA: 324137634
 
 ## 📝 Licença
 
