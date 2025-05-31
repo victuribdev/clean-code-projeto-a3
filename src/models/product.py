@@ -1,5 +1,6 @@
 class Product:
-    def __init__(self, name: str, price: float, quantity: int):
-        self.name = name     
-        self.price = price    
-        self.quantity = quantity  
+    def __init__(self, id: int, name: str, price: float, stock: int):
+        self.id = id
+        self.name = name
+        self.price = price
+        self.stock = stock  

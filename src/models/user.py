@@ -10,10 +10,14 @@ class AuthService:
         self.current_user = None
 
     def add_user(self, username: str, password: str, user_type: str) -> None:
-        # Implementação
+        self.users.append({"username": username, "password": password, "type": user_type})
         
     def login(self, username: str, password: str) -> bool:
-        # Implementação
+        for user in self.users:
+            if user["username"] == username and user["password"] == password:
+                self.current_user = user
+                return True
+        return False
         
     def logout(self) -> None:
         self.current_user = None
