@@ -7,8 +7,8 @@ WORKDIR /app
 # Copia os arquivos do projeto para o container
 COPY . .
 
-# Instala dependências (se houver requirements.txt, descomente a linha abaixo)
-# RUN pip install -r requirements.txt
+# Instala as dependências
+RUN pip install -r requirements.txt
 
-# Executa os testes automaticamente ao iniciar o container
-CMD ["python", "-m", "unittest", "discover", "tests"] 
+# Comando para executar os testes com cobertura
+CMD ["pytest", "tests/", "-v", "--cov=src", "--cov-report=term-missing"] 
